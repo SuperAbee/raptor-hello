@@ -34,13 +34,11 @@ func main () {
 		}
 	}()
 
-	go func() {
-		http.HandleFunc("/hello", HelloHandler)
-		err := http.ListenAndServe(":8878", nil)
-		if err != nil {
-			log.Println(err)
-		}
-	}()
+	http.HandleFunc("/hello", HelloHandler)
+	err := http.ListenAndServe(":8878", nil)
+	if err != nil {
+		log.Println(err)
+	}
 }
 
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
